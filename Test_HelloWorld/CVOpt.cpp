@@ -41,7 +41,7 @@ void CVOpt::on_cv_over(void*  _cb, int _val)
 	if (pFn)
 	{
 		std::stringstream ss;
-		ss << "Get Data " << _val;
+		ss << "Test Git Get Data " << _val;
 
 		((OnConvert2)_cb)(_val, ss.str().c_str(), ss.str().length());
 		//(*pFn)(_val, ss.str().c_str(), ss.str().length());
