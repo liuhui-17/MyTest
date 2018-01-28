@@ -36,14 +36,23 @@ void CVOpt::cv_thread(void*  _cb)
 
 void CVOpt::on_cv_over(void*  _cb, int _val)
 {
-	OnConvert2* pFn = (OnConvert2*)_cb;
+	OnConvert2 pFn2 = (OnConvert2)_cb;
+	OnConvert pFn = (OnConvert2)_cb;
 
 	if (pFn)
 	{
 		std::stringstream ss;
 		ss << "Test Git Get Data " << _val;
 
-		((OnConvert2)_cb)(_val, ss.str().c_str(), ss.str().length());
-		//(*pFn)(_val, ss.str().c_str(), ss.str().length());
+		(pFn)(_val, ss.str().c_str(), ss.str().length());
+	}
+
+	if (pFn2)
+	{
+		std::stringstream ss;
+		ss << "Test Git Get Data " << _val;
+
+		(OnConvert2(_cb))(_val, ss.str().c_str(), ss.str().length());
+		(pFn2)(_val, ss.str().c_str(), ss.str().length());
 	}
 }
